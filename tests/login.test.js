@@ -1,6 +1,7 @@
 import http from 'k6/http';
 import { sleep, check } from 'k6';
 const postLogin = JSON.parse(open('../fixtures/postLogin.json'))
+import { pegarBaseURL  } from '../utils/variaveis.js';
 
 
 export const options = {
@@ -21,7 +22,8 @@ export const options = {
 
 // The default exported function is gonna be picked up by k6 as the entry point for the test script. It will be executed repeatedly in "iterations" for the whole duration of the test.
 export default function () {
-    const url = 'http://localhost:3000/login';
+    const url = pegarBaseURL() + '/login';
+    //http://localhost:3000
     //postLogin.username = "junior.lima"
     //console.log(postLogin);
     const payload = JSON.stringify(
